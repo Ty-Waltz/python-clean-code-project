@@ -3,7 +3,7 @@ from library_book import Book
 from library_user import User
 from library_author import Author
 from utils import validate_input
-from library_user import get_name
+
 
 def main_menu():
     print("1. Book Operations")

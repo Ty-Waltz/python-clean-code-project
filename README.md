@@ -17,5 +17,14 @@
    Author Operations:  
         1. Add a new author - This will ask for the name of the author you would like to add and a description of the author. Once complete, it will tell you the author was added successfully.  
         2. View author details - This will ask for the name of the authorfetch the details about the author. If not found, it will display the message "Author not found".  
-        3. Display all authors - This operation will display all authors currently in the data-base.  
+        3. Display all authors - This operation will display all authors currently in the data-base.
+   
+### Class Book  
+This class is used for all the book functions used in the main code. This is what will return all the info of the books like title, author, genre, publication date, and wether the book is borrowed or avalible.  
+### Class User  
+This class will set the user ID and name, as well as transfer borrowed books to said user and back to the library
+### Class Author  
+This class is how the author's name and description is put into the data-base
+### utils.py  
+This has the function "validate input" which will make sure all inputs are correct and inputted properly  
 

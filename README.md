@@ -30,10 +30,12 @@ This has the function "validate input" which will make sure all inputs are corre
 
 ### How to Export and Use the Library Management System on a Local Device:
 To use the Library Management System on a local device, follow these steps:  
+
 Download the Code:  
 1 .If the code is in a GitHub repository, you can clone the repository to your local machine using Git or download the code as a ZIP file and extract it.  
 2. Ensure you have Python installed on your local device. You can download Python from python.org.  
 3. Open a terminal or command prompt and navigate to the directory where the code is located.  
+
 Run the Code:  
 1. In the terminal, run the Python script by typing python <script_name>.py (replace <script_name> with the actual name of your main script, e.g., library_management.py).
 2. Follow the on-screen instructions to interact with the Library Management System. Use the menus to perform book, user, and author operations.

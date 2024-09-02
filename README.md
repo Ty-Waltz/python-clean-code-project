@@ -1,4 +1,4 @@
-# Library Management System 
+# Library Management System (Now connected to SQL!)
 ## How it works:
 1. Running the code for the first time will bring you to a menu, here you will see 4 options (Book Operation, User Operations, Author Operations, and Quit)
    -Book Operations will bring you to another menu with all the "book" operations  

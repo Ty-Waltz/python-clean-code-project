@@ -4,7 +4,59 @@ from library_user import User
 from library_author import Author
 from utils import validate_input
 
+def create_tables():
+    conn = mysql.connector.connect(
+        host="localhost",
+        user="yourusername",
+        password="yourpassword",
+        database="yourdatabase"
+    )
+    cursor = conn.cursor()
 
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS authors (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(255) NOT NULL,
+            biography TEXT
+        );
+    """)
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS books (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            title VARCHAR(255) NOT NULL,
+            author_id INT,
+            isbn VARCHAR(13) NOT NULL,
+            publication_date DATE,
+            availability BOOLEAN DEFAULT 1,
+            FOREIGN KEY (author_id) REFERENCES authors(id)
+        );
+    """)
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS users (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(255) NOT NULL,
+            library_id VARCHAR(10) NOT NULL UNIQUE
+        );
+    """)
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS borrowed_books (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            user_id INT,
+            book_id INT,
+            borrow_date DATE NOT NULL,
+            return_date DATE,
+            FOREIGN KEY (user_id) REFERENCES users(id),
+            FOREIGN KEY (book_id) REFERENCES books(id)
+        );
+    """)
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+    
 def main_menu():
     print("1. Book Operations")
     print("2. User Operations")

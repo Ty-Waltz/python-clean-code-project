@@ -28,3 +28,10 @@ class User:
         def __str__(self):
             books = ', '.join(self.__borrowed_books) if self.__borrowed_books else "No books borrowed"
             return f"Name: {self.__name}, Library ID: {self.__library_id}, Borrowed Books: {books}"
+        
+      
+    
+        def save_to_db(self, cursor):
+            query = "INSERT INTO users (name, library_id) VALUES (%s, %s)"
+            values = (self.name, self.library_id)
+            cursor.execute(query, values)

@@ -11,3 +11,8 @@ class Author:
 
     def __str__(self):
         return f"Name: {self.__name}, Biography: {self.__biography}"
+    
+    def save_to_db(self, cursor):
+        query = "INSERT INTO authors (name, biography) VALUES (%s, %s)"
+        values = (self.name, self.biography)
+        cursor.execute(query, values)

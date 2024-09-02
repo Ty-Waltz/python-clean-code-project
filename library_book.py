@@ -34,3 +34,8 @@ class Book:
         status = "Available" if self.__is_available else "Borrowed"
         return f"Title: {self.__title}, Author: {self.__author}, Genre: {self.__genre}, " \
                f"Publication Date: {self.__publication_date}, Status: {status}"
+    
+    def save_to_db(self, cursor):
+        query = "INSERT INTO books (title, author_id, isbn, publication_date, availability) VALUES (%s, %s, %s, %s, %s)"
+        values = (self.title, self.author_id, self.isbn, self.publication_date, self.availability)
+        cursor.execute(query, values)

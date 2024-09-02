@@ -14,5 +14,5 @@ class Author:
     
     def save_to_db(self, cursor):
         query = "INSERT INTO authors (name, biography) VALUES (%s, %s)"
-        values = (self.name, self.biography)
+        values = (self.name(), self.biography())
         cursor.execute(query, values)

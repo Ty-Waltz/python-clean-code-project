@@ -3,17 +3,17 @@ from library_book import Book
 from library_user import User
 from library_author import Author
 from utils import validate_input
+import mysql.connector
 
-def create_tables():
-    conn = mysql.connector.connect(
+conn = mysql.connector.connect(
         host="localhost",
         user="yourusername",
         password="yourpassword",
         database="yourdatabase"
     )
-    cursor = conn.cursor()
+cursor = conn.cursor()
 
-    cursor.execute("""
+cursor.execute("""
         CREATE TABLE IF NOT EXISTS authors (
             id INT AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
@@ -21,7 +21,7 @@ def create_tables():
         );
     """)
 
-    cursor.execute("""
+cursor.execute("""
         CREATE TABLE IF NOT EXISTS books (
             id INT AUTO_INCREMENT PRIMARY KEY,
             title VARCHAR(255) NOT NULL,
@@ -33,7 +33,7 @@ def create_tables():
         );
     """)
 
-    cursor.execute("""
+cursor.execute("""
         CREATE TABLE IF NOT EXISTS users (
             id INT AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
@@ -41,7 +41,7 @@ def create_tables():
         );
     """)
 
-    cursor.execute("""
+cursor.execute("""
         CREATE TABLE IF NOT EXISTS borrowed_books (
             id INT AUTO_INCREMENT PRIMARY KEY,
             user_id INT,
@@ -53,10 +53,10 @@ def create_tables():
         );
     """)
 
-    conn.commit()
-    cursor.close()
-    conn.close()
-    
+conn.commit()
+cursor.close()
+conn.close()
+
 def main_menu():
     print("1. Book Operations")
     print("2. User Operations")

@@ -36,6 +36,6 @@ class Book:
                f"Publication Date: {self.__publication_date}, Status: {status}"
     
     def save_to_db(self, cursor):
-        query = "INSERT INTO books (title, author_id, isbn, publication_date, availability) VALUES (%s, %s, %s, %s, %s)"
-        values = (self.title, self.author_id, self.isbn, self.publication_date, self.availability)
+        query = "INSERT INTO books (title, author_id, publication_date, genre) VALUES (%s, %s, %s, %s, %s)"
+        values = (self.title, self.author,  self.publication_date, self.genre)
         cursor.execute(query, values)
